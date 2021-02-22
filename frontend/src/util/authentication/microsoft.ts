@@ -6,7 +6,7 @@ export class MicrosoftAuthenticationProvider implements AuthenticationProvider {
   private msalConfig: Configuration = {
     auth: {
       clientId: 'df346ab3-6ba2-4c7a-a4b6-96986093b576',
-      redirectUri: `${baseUrl}/authenticate`,
+      redirectUri: baseUrl,
     },
     cache: {
       cacheLocation: 'localStorage',
@@ -18,7 +18,7 @@ export class MicrosoftAuthenticationProvider implements AuthenticationProvider {
 
   public authenticate = async (): Promise<void> => {
     if (!(await this.isAuthenticated())) {
-      if (window.location.hash.length === 0) {
+      if (!window.location.hash.startsWith('#code=')) {
         this.application.loginRedirect({ scopes: this.scopes });
       } else {
         const result = await this.application.handleRedirectPromise();

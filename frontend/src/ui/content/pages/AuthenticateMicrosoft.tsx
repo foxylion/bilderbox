@@ -10,7 +10,6 @@ export const AuthenticateMicrosoft: React.FC = () => {
   React.useEffect(() => {
     (async () => {
       const authentication = new MicrosoftAuthenticationProvider();
-      await authentication.authenticate();
       const client = MSGraphClient.initWithMiddleware({
         authProvider: { getAccessToken: authentication.getAccessToken },
       });
