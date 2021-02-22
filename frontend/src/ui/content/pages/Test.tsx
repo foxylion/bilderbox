@@ -22,3 +22,12 @@ export const Test: React.FC = () => {
   }, [path]);
   return <pre>{JSON.stringify(result, undefined, 2)}</pre>;
 };
+
+// Root of drive: https://docs.microsoft.com/en-us/graph/api/driveitem-list-children?view=graph-rest-1.0&tabs=http#list-children-of-a-driveitem-with-a-known-id
+// Example: https://localhost:3000/test/me/drive/root/children
+
+// Files on own drive: https://docs.microsoft.com/en-us/graph/api/driveitem-list-children?view=graph-rest-1.0&tabs=http#list-children-in-the-root-of-the-current-users-drive
+// Example: https://localhost:3000/test/me/drive/items/9C931AD91DD004A4!3872/children
+
+// Shared drive: https://docs.microsoft.com/en-us/onedrive/developer/rest-api/concepts/using-sharing-links?view=odsp-graph-online#enumerate-the-contents-of-a-shared-folder
+// Example: https://localhost:3000/test/drives/810805efb9fe5085/items/810805EFB9FE5085!105/children

@@ -9,11 +9,12 @@ import { Content } from './content/Content';
 import { baseUrl } from '../util/baseUrl';
 
 export const App: React.FC = () => {
+  const basename = new URL(baseUrl).pathname;
   return (
     <>
       <CssBaseline />
       <ThemeProvider theme={theme}>
-        <HashRouter basename={baseUrl}>
+        <HashRouter basename={basename}>
           <Header />
           <Content />
         </HashRouter>
