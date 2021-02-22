@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { App } from './ui/components/App';
+import { App } from './ui/App';
 import { reportWebVitals } from './util/reportWebVitals';
 
 ReactDOM.render(
@@ -11,4 +11,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-reportWebVitals(console.log); // see https://bit.ly/CRA-vitals
+reportWebVitals(/*console.log*/); // see https://bit.ly/CRA-vitals

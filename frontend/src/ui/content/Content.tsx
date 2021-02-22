@@ -4,6 +4,8 @@ import { makeStyles, Theme } from '@material-ui/core';
 import { Route, Switch } from 'react-router';
 
 import { Main } from './pages/Main';
+import { AuthenticateMicrosoft } from './pages/AuthenticateMicrosoft';
+import { Test } from './pages/Test';
 
 const useStyles = makeStyles((theme: Theme) => ({
   content: {
@@ -18,6 +20,12 @@ export const Content: React.FC = () => {
   return (
     <div className={classes.content}>
       <Switch>
+        <Route path="/authenticate">
+          <AuthenticateMicrosoft />
+        </Route>
+        <Route path="/test/:path+">
+          <Test />
+        </Route>
         <Route path="/">
           <Main />
         </Route>
