@@ -19,7 +19,7 @@ export class MicrosoftAuthenticationProvider implements AuthenticationProvider {
   public authenticate = async (): Promise<void> => {
     if (!(await this.isAuthenticated())) {
       if (!window.location.hash.startsWith('#code=')) {
-        this.application.loginRedirect({ scopes: this.scopes });
+        this.application.acquireTokenRedirect({ scopes: this.scopes });
       } else {
         const result = await this.application.handleRedirectPromise();
         if (!result) {
