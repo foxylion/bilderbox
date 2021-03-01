@@ -17,14 +17,14 @@ export class MicrosoftAuthenticationProvider implements AuthenticationProvider {
   private application = new PublicClientApplication(this.msalConfig);
 
   public authenticate = async (): Promise<void> => {
-    if (!(await this.isAuthenticated())) {
-      if (!window.location.hash.startsWith('#code=')) {
-        this.application.acquireTokenRedirect({ scopes: this.scopes });
-      } else {
-        const result = await this.application.handleRedirectPromise();
-        if (!result) {
-          throw new Error('Failed to authenticate, result ist NULL');
-        }
+    if (!window.location.hash.startsWith('#code=')) {
+      if (!(await this.isAuthenticated())) {
+        this.application.acquireTokenRedirect({ scopes: this.scopes, account: this.application.getAllAccounts()[0] });
+      }
+    } else {
+      const result = await this.application.handleRedirectPromise();
+      if (!result) {
+        throw new Error('Failed to authenticate, result ist NULL');
       }
     }
   };
